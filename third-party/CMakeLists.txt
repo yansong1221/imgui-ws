@@ -5,6 +5,7 @@ if (IMGUI_WS_ALL_WARNINGS_3RD_PARTY)
         # todo : windows
     endif()
 endif()
-
+if(NOT TARGET imgui)
 add_subdirectory(imgui)
+endif()
 add_subdirectory(incppect)
