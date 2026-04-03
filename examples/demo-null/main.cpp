@@ -10,9 +10,9 @@ ImGuiKey toImGuiKey(int32_t keyCode) {
         case 8: return ImGuiKey_Backspace;
         case 9: return ImGuiKey_Tab;
         case 13: return ImGuiKey_Enter;
-        case 16: return ImGuiKey_ModShift;
-        case 17: return ImGuiKey_ModCtrl;
-        case 18: return ImGuiKey_ModAlt;
+        case 16: return ImGuiKey_ReservedForModShift;
+        case 17: return ImGuiKey_ReservedForModCtrl;
+        case 18: return ImGuiKey_ReservedForModAlt;
         case 19: return ImGuiKey_Pause;
         case 20: return ImGuiKey_CapsLock;
         case 27: return ImGuiKey_Escape;
@@ -67,9 +67,9 @@ ImGuiKey toImGuiKey(int32_t keyCode) {
         //case 91: return ImGuiKey_LWin;
         //case 92: return ImGuiKey_RWin;
         //case 93: return ImGuiKey_Apps;
-        case 91: return ImGuiKey_ModSuper;
-        case 92: return ImGuiKey_ModSuper;
-        case 93: return ImGuiKey_ModSuper;
+        case 91: return ImGuiKey_ReservedForModSuper;
+        case 92: return ImGuiKey_ReservedForModSuper;
+        case 93: return ImGuiKey_ReservedForModSuper;
 
         case 96: return ImGuiKey_Keypad0;
         case 97: return ImGuiKey_Keypad1;
