@@ -6,7 +6,29 @@ if (IMGUI_WS_ALL_WARNINGS)
     endif()
 endif()
 
-file(READ "imgui-ws.js" src_imgui-ws_js)
+file(READ "imgui-ws.js" src_imgui_ws_js_src)
+
+# split large JS into multiple raw string literal pieces to satisfy MSVC string-size limit
+set(chunk_size 4096)
+string(LENGTH "${src_imgui_ws_js_src}" src_js_len)
+set(src_imgui_ws_js "")
+set(pos 0)
+while(pos LESS src_js_len)
+    math(EXPR remaining "${src_js_len} - ${pos}")
+    if(remaining GREATER chunk_size)
+        set(cur_len ${chunk_size})
+    else()
+        set(cur_len ${remaining})
+    endif()
+    string(SUBSTRING "${src_imgui_ws_js_src}" ${pos} ${cur_len} chunk)
+    if(src_imgui_ws_js STREQUAL "")
+        set(src_imgui_ws_js "R\"IMGUIWSJS(${chunk})IMGUIWSJS\"")
+    else()
+        set(src_imgui_ws_js "${src_imgui_ws_js} R\"IMGUIWSJS(${chunk})IMGUIWSJS\"")
+    endif()
+    math(EXPR pos "${pos} + ${cur_len}")
+endwhile()
+
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/common.h.in ${CMAKE_CURRENT_SOURCE_DIR}/common.h @ONLY)
 
 add_library(imgui-ws ${IMTUI_LIBRARY_TYPE}

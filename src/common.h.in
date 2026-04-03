@@ -6,8 +6,4 @@
 #pragma once
 
 // the main js module
-constexpr auto kImGuiWS_js = R"js(
-
-@src_imgui-ws_js@
-
-)js";
+constexpr auto kImGuiWS_js = @src_imgui_ws_js@;

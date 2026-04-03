@@ -7,6 +7,7 @@
 #include "imgui/imgui.h"
 
 #include <cstring>
+#include <iterator>
 
 namespace {
 
