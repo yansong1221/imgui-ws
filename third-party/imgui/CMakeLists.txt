@@ -13,7 +13,7 @@ add_library(imgui
     )
 
 target_include_directories(imgui INTERFACE
-    .
+    ./imgui
     )
 
 target_include_directories(imgui PRIVATE
